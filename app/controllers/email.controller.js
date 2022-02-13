@@ -77,7 +77,7 @@ exports.sendEmail = (req, res) => {
                                         </div>
                                     </div>
                                     <div style="margin: auto;">
-                                        <a target="_blank" href="http://165.232.157.54/resetpassword" >
+                                        <a target="_blank" href="https://theinfiniteplaza.com/resetpassword" >
                                             <button class="button">Reset Password</button>
                                         </a>
                                     </div>
