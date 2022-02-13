@@ -8,7 +8,7 @@ var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 
 exports.signup = (req, res) => {
-  User.findOne({$and:[
+  User.findOne({$or:[
         {userName: req.body.userName},
         {email: req.body.email}
       ]   
@@ -102,20 +102,20 @@ exports.signout = async (req, res) => {
 exports.resetpassword = (req, res) => {
   const filter = {email: req.body.email};
   const update = {password: bcrypt.hashSync(req.body.password, 8)};
-  console.log("AA");
-  console.log(filter);
-  console.log(update);
+  // console.log("AA");
+  // console.log(filter);
+  // console.log(update);
 
  User.findOneAndUpdate(filter,update,{returnOriginal: false})
  .exec((err, user) => {
     if (err) {
-      console.log("BB");
+    //  console.log("BB");
       res.status(500).send({ message: err });
       return;
     }
 
     if (!user) {
-      console.log("CC");
+    //  console.log("CC");
       return res.status(404).send("Email Not found.");
     }
     res.send("ResetPassword Success!");
@@ -123,8 +123,8 @@ exports.resetpassword = (req, res) => {
 };
 
 exports.sellersignup = (req, res) => {
-  console.log("A",req.body);
-  Seller.findOne({$and:[
+  //console.log("A",req.body);
+  Seller.findOne({$or:[
       {fullName: req.body.fullName},
       {email: req.body.email}
     ]   
